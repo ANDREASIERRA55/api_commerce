@@ -1,10 +1,10 @@
 package com.projects.tidystore.services;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.projects.tidystore.dtos.ItemDto;
@@ -36,6 +36,31 @@ public class ItemService {
         Room room = itemRoomRepository.findById(newItem.getRoomId()).orElse(null);
         item.setRoom(room);
         return itemRepository.save(item);
+    }
+
+    public Map<String, String> delete(Long id) {
+        Map<String, String> message = new HashMap<>();
+        if (itemRepository.findById(id).isPresent()) {
+            itemRepository.deleteById(id);
+            message.put("message", "OK");
+            return message;
+        }
+        message.put("message", "Error");
+        return message;
+    }
+
+    public Item update(Long id, Item newDataItem) {
+        return itemRepository.findById(id)
+                .map((item) -> {
+                    item.setName(newDataItem.getName());
+                    item.setShelving(newDataItem.getShelving());
+                    item.setSection(newDataItem.getSection());
+                    item.setPosition(newDataItem.getPosition());
+                    item.setBox(newDataItem.getBox());
+                    item.setRoom(newDataItem.getRoom());
+                });
+        return itemRepository.save(newDataItem);
+
     }
 
 }

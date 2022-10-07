@@ -1,7 +1,5 @@
 package com.projects.tidystore.entity;
 
-import java.util.Optional;
-
 import javax.persistence.*;
 
 import org.hibernate.annotations.OnDelete;
