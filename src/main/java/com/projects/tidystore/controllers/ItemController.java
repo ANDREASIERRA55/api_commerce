@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.projects.tidystore.entity.Item;
 import com.projects.tidystore.services.ItemService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/api")
 public class ItemController {
@@ -22,8 +23,8 @@ public class ItemController {
     }
 
     @GetMapping(value = "/items/{id}")
-    public Item show(@PathVariable Long id, @RequestBody Item item) {
-        return itemService.show(id, item);
+    public Item show(@PathVariable Long id) {
+        return itemService.show(id);
     }
 
     @PostMapping(value = "/items")

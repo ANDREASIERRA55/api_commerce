@@ -20,9 +20,9 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    // public Item show(Long id){
-    // return itemRepository.findById(id);
-    // }
+    public Item show(Long id) {
+        return itemRepository.findById(id).orElse(null);
+    }
 
     public Item store(Item newItem) {
         Item item = new Item();
