@@ -51,16 +51,17 @@ public class ItemService {
 
     public Item update(Long id, Item newDataItem) {
         return itemRepository.findById(id)
-                .map((item) -> {
+                .map(item -> {
                     item.setName(newDataItem.getName());
                     item.setShelving(newDataItem.getShelving());
                     item.setSection(newDataItem.getSection());
                     item.setPosition(newDataItem.getPosition());
                     item.setBox(newDataItem.getBox());
                     item.setRoom(newDataItem.getRoom());
+                    return itemRepository.save(newDataItem);
+                }).orElseGet(() -> {
+                    newDataItem.setId(id);
+                    return itemRepository.save(newDataItem);
                 });
-        return itemRepository.save(newDataItem);
-
     }
-
 }
