@@ -20,6 +20,10 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
+    // public Item show(Long id){
+    // return itemRepository.findById(id);
+    // }
+
     public Item store(Item newItem) {
         Item item = new Item();
         item.setShelving(newItem.getShelving());
