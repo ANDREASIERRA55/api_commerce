@@ -21,6 +21,11 @@ public class ItemController {
         return itemService.getAll();
     }
 
+    @GetMapping(value = "/items/{id}")
+    public Item show(@PathVariable Long id, @RequestBody Item item) {
+        return itemService.show(id, item);
+    }
+
     @PostMapping(value = "/items")
     public Item store(@RequestBody Item newItem) {
         Item item = itemService.store(newItem);
