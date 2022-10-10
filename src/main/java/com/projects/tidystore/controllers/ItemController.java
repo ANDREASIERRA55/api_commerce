@@ -19,6 +19,7 @@ public class ItemController {
 
     @GetMapping(value = "/items")
     public List<Item> getAll() {
+        System.out.println(itemService.findAllRooms().toString());
         return itemService.getAll();
     }
 

@@ -1,5 +1,6 @@
 package com.projects.tidystore.services;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,10 @@ public class ItemService {
 
     public List<Item> getAll() {
         return itemRepository.findAll();
+    }
+
+    public Collection<Item> findAllRooms() {
+        return itemRepository.findAllRooms();
     }
 
     public Item show(Long id) {
