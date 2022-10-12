@@ -9,5 +9,4 @@ public class TidystoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TidystoreApplication.class, args);
 	}
-
 }

@@ -2,11 +2,6 @@ package com.projects.tidystore.entity;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
@@ -18,11 +13,8 @@ public class Item {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "room_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Room room;
+    @Column(name = "room", nullable = false)
+    private String room;
 
     @Column(name = "shelving", nullable = false)
     private String shelving;
